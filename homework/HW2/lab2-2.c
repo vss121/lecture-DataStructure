@@ -26,7 +26,7 @@ int main()
     printf("address of ptr == %p\n", &ptr);  //ptr의 주소
     printf("value of *ptr == %d\n", *ptr);  //*ptr(=ptr이 가리키고 있는 변수)(= i)의 값
     printf("value of dptr == %p\n", dptr);  //dptr(= &ptr)(= ptr의 주소)의 값
-    printf("address of ptr == %p\n", &dptr);  //dptr의 주소
+    printf("address of dptr == %p\n", &dptr);  //dptr의 주소
     printf("value of *dptr == %p\n", *dptr);  //*dptr(=dptr이 가리키고 있는 변수)(=ptr의 값)(=i의 주소)의 값
     printf("value of **dptr == %d\n", **dptr);  //**dptr(=*dptr(= ptr)이 가리키고 있는 변수)(= i)의 값
     *ptr = 7777; /* changing the value of *ptr */  //*ptr(ptr이 가리키는 변수의 값 = i의 값)을 7777로 초기화
