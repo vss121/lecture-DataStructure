@@ -63,9 +63,9 @@ int main()
 	int row,col;
 	scanf("%d %d", &row, &col);
 	
-	int** matrix = (int **)malloc(sizeof(int)*row);
-	for(int r=0; r<row; r++) {
-		matrix[r] = (int *)malloc(sizeof(int)*col);
+	int** matrix = (int **)malloc(sizeof(int)*row);			//**
+	for(int r=0; r<row; r++) {					//**
+		matrix[r] = (int *)malloc(sizeof(int)*col);		//**
 	}
 	
 	int idx=1;
