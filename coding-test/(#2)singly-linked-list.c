@@ -1,37 +1,33 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-typedef struct Node {
+typedef struct Node{
 	int key;
-	struct Node* link;
-}listNode;
+	struct Node * link;
+} listNode;
 
-typedef struct Head {
+typedef struct Head{
 	struct Node* first;
-}headNode;
-
-int freeList(headNode* h)
-{
-	listNode* p = h->first;
-	listNode* prev = NULL;
-	while(p) {
-		prev = p;
-		p = p->link;
-		free(prev);
-	}
-	free(h);
-}
+} headNode;
 
 int initialize(headNode** h)
 {
-	*h = (headNode*)malloc(sizeof(headNode));
+	(*h) = (headNode*)malloc(sizeof(headNode));
 	(*h)->first = NULL;
 }
-
+int freenode(headNode* h)	//**
+{
+	listNode* p = h->first;	//
+	listNode* prev = h->first;
+	while(p){
+		prev = p; 
+		p = p->link;
+		free(prev);
+	}
+	free(h);	//*
+}
 int insert(headNode* h, int num)
 {
-	
-	int idx = 2;
 	if(h->first == NULL) {
 		listNode* firstnode = (listNode*)malloc(sizeof(listNode));
 		firstnode->key = 1;
@@ -39,21 +35,20 @@ int insert(headNode* h, int num)
 		
 		h->first = firstnode;
 	}
+	int idx = 2;
 	listNode* temp = h->first;
 	for(int i=2; i<=num; i++) {
-		listNode* newNode = (listNode*)malloc(sizeof(listNode));
-		newNode->key = idx;
-		newNode->link = NULL;
-		
+		listNode* newnode = (listNode*)malloc(sizeof(listNode));
+		newnode->key = idx;
+		newnode->link = NULL;
 		idx++;
-		temp->link = newNode;
-		temp = temp->link;
-	}
-	
+		
+		temp->link = newnode;
+		temp = temp->link;	//**
 }
-void printList(headNode* h)
+}
+int printnode(headNode* h)
 {
-	
 	listNode* temp = h->first;
 	while(temp) {
 		printf("%d ", temp->key);
@@ -62,12 +57,11 @@ void printList(headNode* h)
 }
 int main()
 {
-	int num; scanf("%d", &num);
+	headNode* head;
+	initialize(&head);
+	insert(head, 10);
+	printnode(head);
+	free(head);
 	
-	headNode* headnode;
-	initialize(&headnode);
-	
-	insert(headnode, num);
-	printList(headnode);
 	
 }
