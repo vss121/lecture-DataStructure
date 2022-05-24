@@ -61,7 +61,7 @@ int main()
 	initialize(&head);
 	insert(head, 10);
 	printnode(head);
-	free(head);
+	freenode(head);
 	
 	
 }
